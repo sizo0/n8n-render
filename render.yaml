@@ -10,13 +10,12 @@
 services:
   - type: web
     plan: free
-    # This is the runtime for services that pull a prebuilt Docker image
-    runtime: image
+    # Use a custom Dockerfile instead of a prebuilt image
+    runtime: docker
     # You can give the service any name
     name: n8n-service
-    image:
-      # Pulls the n8n image tagged as latest from Docker Hub
-      url: docker.io/n8nio/n8n:latest
+    # Path to your Dockerfile in the repo
+    dockerfilePath: ./Dockerfile
 
     # All environment variables defined below are required!
     #
@@ -51,6 +50,14 @@ services:
         fromDatabase:
           name: n8n-db
           property: user
+      
+      # Allow Node.js built-in modules in Function/Code nodes
+      - key: NODE_FUNCTION_ALLOW_BUILTIN
+        value: "*"
+
+      # Allow external npm modules in Function/Code nodes
+      - key: NODE_FUNCTION_ALLOW_EXTERNAL
+        value: "@aws-sdk/client-s3"
 
 databases:
   - name: n8n-db
