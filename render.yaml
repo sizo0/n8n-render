@@ -54,10 +54,21 @@ services:
       # Allow Node.js built-in modules in Function/Code nodes
       - key: NODE_FUNCTION_ALLOW_BUILTIN
         value: "*"
-
       # Allow external npm modules in Function/Code nodes
       - key: NODE_FUNCTION_ALLOW_EXTERNAL
         value: "@aws-sdk/client-s3"
+      
+      - key: N8N_HOST
+        value: ${RENDER_EXTERNAL_HOSTNAME}
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_EDITOR_BASE_URL
+        value: ${RENDER_EXTERNAL_URL}
+      - key: WEBHOOK_URL
+        value: ${RENDER_EXTERNAL_URL}
+      - key: N8N_PROXY_HOPS
+        value: "1"
+
 
 databases:
   - name: n8n-db
