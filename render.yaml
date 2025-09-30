@@ -50,16 +50,6 @@ services:
         fromDatabase:
           name: n8n-db
           property: user
-      
-      # Allow Node.js built-in modules in Function/Code nodes
-      - key: NODE_FUNCTION_ALLOW_BUILTIN
-        value: "*"
-      # Allow external npm modules in Function/Code nodes
-      - key: NODE_FUNCTION_ALLOW_EXTERNAL
-        value: "@aws-sdk/client-s3"
-      
-      - key: N8N_PUSH_BACKEND
-        value: sse
 
 databases:
   - name: n8n-db
