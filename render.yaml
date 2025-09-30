@@ -59,7 +59,7 @@ services:
         value: "@aws-sdk/client-s3"
       
       - key: N8N_PUSH_BACKEND
-        value: polling
+        value: sse
 
 databases:
   - name: n8n-db
