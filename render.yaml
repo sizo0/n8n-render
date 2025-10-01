@@ -50,7 +50,22 @@ services:
         fromDatabase:
           name: n8n-db
           property: user
-
+      - key: N8N_EDITOR_BASE_URL
+        value: https://n8n-service-f0ak.onrender.com
+      - key: WEBHOOK_URL
+        value: https://n8n-service-f0ak.onrender.com/
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_PUSH_BACKEND
+        value: sse
+      - key: N8N_ALLOWED_ORIGINS
+        value: https://n8n-service-f0ak.onrender.com
+      - key: N8N_PROXY_HOPS
+        value: 1
+      - key: NODE_ENV
+        value: production
 databases:
   - name: n8n-db
     plan: free
