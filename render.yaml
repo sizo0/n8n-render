@@ -58,10 +58,6 @@ services:
         value: 0.0.0.0
       - key: N8N_PROTOCOL
         value: https
-      - key: N8N_PUSH_BACKEND
-        value: sse
-      - key: N8N_ALLOWED_ORIGINS
-        value: https://n8n-service-f0ak.onrender.com
       - key: N8N_PROXY_HOPS
         value: 1
       - key: NODE_ENV
