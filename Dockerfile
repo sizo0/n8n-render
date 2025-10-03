@@ -1,7 +1,7 @@
-FROM n8nio/n8n:1.114.0
+FROM n8nio/n8n:1.112.6
 
 USER root
-RUN npm install -g @aws-sdk/client-s3
+RUN npm install -g @aws-sdk/client-s3@3.876.0
 
 USER node
 
