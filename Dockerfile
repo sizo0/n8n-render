@@ -1,9 +1,7 @@
 FROM n8nio/n8n:1.112.6
 
 USER root
-RUN npm install --omit=dev --no-audit --no-fund \
-      --prefix /usr/local/lib/node_modules/n8n \
-      @aws-sdk/client-s3
+RUN npm install -g @aws-sdk/client-s3
 
 ENV NODE_FUNCTION_ALLOW_EXTERNAL="@aws-sdk/client-s3"
 ENV NODE_FUNCTION_ALLOW_BUILTIN="*"
