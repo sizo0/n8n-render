@@ -1,9 +1,12 @@
 FROM n8nio/n8n:1.112.6
 
 USER root
-RUN npm install -g @aws-sdk/client-s3@3.876.0
+RUN npm install --omit=dev --no-audit --no-fund \
+      --prefix /usr/local/lib/node_modules/n8n \
+      @aws-sdk/client-s3
 
-USER node
+ENV NODE_FUNCTION_ALLOW_EXTERNAL="@aws-sdk/client-s3"
+ENV NODE_FUNCTION_ALLOW_BUILTIN="*"
 
 ENV GENERIC_TIMEZONE="Europe/Paris"
 ENV TZ="Europe/Paris"
@@ -16,5 +19,5 @@ ENV EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
 ENV EXECUTIONS_DATA_SAVE_ON_ERROR=all
 ENV EXECUTIONS_DATA_SAVE_ON_PROGRESS=false
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
-ENV NODE_FUNCTION_ALLOW_BUILTIN="*"
-ENV NODE_FUNCTION_ALLOW_EXTERNAL="@aws-sdk/client-s3"
+
+USER node
