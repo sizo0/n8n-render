@@ -1,6 +1,7 @@
-FROM n8nio/n8n:1.112.6
+FROM node:24-alpine
 
 USER root
+RUN npm install -g n8n@1.113.3
 RUN npm install -g @aws-sdk/client-s3
 
 ENV NODE_FUNCTION_ALLOW_EXTERNAL="@aws-sdk/client-s3"
