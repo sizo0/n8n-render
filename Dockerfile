@@ -1,8 +1,8 @@
 FROM node:24-alpine
 
 USER root
-RUN npm install -g n8n@1.113.3
-RUN npm install -g @aws-sdk/client-s3
+RUN npm i -g n8n@1.114.4
+RUN npm i -g @aws-sdk/client-s3
 
 ENV NODE_FUNCTION_ALLOW_EXTERNAL="@aws-sdk/client-s3"
 ENV NODE_FUNCTION_ALLOW_BUILTIN="*"
@@ -11,7 +11,6 @@ ENV GENERIC_TIMEZONE="Europe/Paris"
 ENV TZ="Europe/Paris"
 ENV DB_SQLITE_POOL_SIZE=1
 ENV N8N_RUNNERS_ENABLED=true
-ENV N8N_BLOCK_ENV_ACCESS_IN_NODE=false
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 ENV N8N_DEFAULT_BINARY_DATA_MODE=filesystem
 ENV EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
@@ -20,3 +19,5 @@ ENV EXECUTIONS_DATA_SAVE_ON_PROGRESS=false
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
 
 USER node
+
+ENTRYPOINT ["n8n"]
